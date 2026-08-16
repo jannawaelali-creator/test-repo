@@ -1,4 +1,4 @@
-name: deploy-pipeline - CD
+name: deploy-eks-pipeline - CD
 'on':
   push:
     branches:
@@ -18,6 +18,6 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_REGION }}
       - name: Update Kubeconfig for Amazon EKS
-        run: aws eks update-kubeconfig --name ${{ secrets.EKS_CLUSTER_NAME }} --region ${{ secrets.AWS_REGION }}
+        run: aws eks update-kubeconfig --name demo-cluster --region ${{ secrets.AWS_REGION }}
       - name: Deploy Manifests to Kubernetes
         run: kubectl apply -f k8s/
