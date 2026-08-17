@@ -27,13 +27,13 @@ jobs:
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v2
       - name: Build Docker Image
-        run: docker build -t 531472034848.dkr.ecr.us-east-1.amazonaws.com/service:${{ github.sha }} -t 531472034848.dkr.ecr.us-east-1.amazonaws.com/service:latest .
+        run: docker build -t 531472034848.dkr.ecr.us-east-1.amazonaws.com/eks:${{ github.sha }} -t 531472034848.dkr.ecr.us-east-1.amazonaws.com/eks:latest .
       - name: Scan Image with Trivy
         uses: aquasecurity/trivy-action@master
         with:
-          image-ref: 531472034848.dkr.ecr.us-east-1.amazonaws.com/service:${{ github.sha }}
+          image-ref: 531472034848.dkr.ecr.us-east-1.amazonaws.com/eks:${{ github.sha }}
           format: sarif
           output: trivy-results.sarif
           severity: CRITICAL,HIGH
       - name: Push to AWS ECR
-        run: docker push 531472034848.dkr.ecr.us-east-1.amazonaws.com/service:${{ github.sha }} && docker push 531472034848.dkr.ecr.us-east-1.amazonaws.com/service:latest
+        run: docker push 531472034848.dkr.ecr.us-east-1.amazonaws.com/eks:${{ github.sha }} && docker push 531472034848.dkr.ecr.us-east-1.amazonaws.com/eks:latest
