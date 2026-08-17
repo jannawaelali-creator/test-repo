@@ -1,4 +1,4 @@
-name: deploy-eks-pipeline - CD
+name: eks-pipeline - CD
 'on':
   push:
     branches:
