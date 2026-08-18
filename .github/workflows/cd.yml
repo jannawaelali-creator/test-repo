@@ -1,4 +1,4 @@
-name: test-pipeline - CD
+name: new-vm-pipeline - CD
 'on':
   push:
     branches:
