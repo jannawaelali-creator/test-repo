@@ -1,4 +1,4 @@
-name: eks-pipeline
+name: test-pipeline
 'on':
   push:
     branches:
